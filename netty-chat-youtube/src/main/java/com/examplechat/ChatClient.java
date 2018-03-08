@@ -41,7 +41,7 @@ public class ChatClient {
 
 	 while(true) {
 		 channel.write(in.readLine()+ "\r\n");
-		 
+		 channel.flush();
 	 }
 		
 	}
