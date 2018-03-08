@@ -16,6 +16,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 		Channel incoimg = ctx.channel();
 		for(Channel channel: channels) {
 			channel.write("[SERVER] -" + incoimg.remoteAddress() +"has Joined! \n" );
+			channel.flush();
 			}
 		channels.add(ctx.channel());
 	}
@@ -26,6 +27,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 		Channel incoimg = ctx.channel();
 		for(Channel channel: channels) {
 			channel.write("[SERVER] -" + incoimg.remoteAddress() +"has left! \n" );
+			channel.flush();
 			}
 		channels.remove(ctx.channel());
 	}
@@ -39,6 +41,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<String> {
 			if(channel != incoming) {
 				
 				channel.write("[" + incoming.remoteAddress() + "] " + message + "\n");
+				channel.flush();
 			}
 			
 		}
